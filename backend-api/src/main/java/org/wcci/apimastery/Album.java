@@ -18,11 +18,13 @@ public class Album {
     private String image;
     @OneToMany
     private Collection<Song> songs;
+    private int rating;
+    @OneToMany
+    private Collection<Comment> comment;
 
     protected Album(){}
 
-    public Album(Long id, String title, String recordLabel, String image, Collection<Song> songs, Artist... artists) {
-        this.id = id;
+    public Album(String title, String recordLabel, String image, Collection<Song> songs, Artist... artists) {
         this.title = title;
         this.recordLabel = recordLabel;
         this.image = image;

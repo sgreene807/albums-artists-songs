@@ -19,6 +19,9 @@ public class Artist {
     private String description;
     private String genre;
     private String recordLabel;
+    private int rating;
+    @OneToMany
+    private Collection<Comment> comment;
 
     protected Artist() {}
 

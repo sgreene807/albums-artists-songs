@@ -1,6 +1,7 @@
 package org.wcci.apimastery;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 
 @Entity
@@ -14,11 +15,13 @@ public class Song {
     private String duration;
     @ManyToOne
     private Album album;
+    private int rating;
+    @OneToMany
+    private Collection<Comment> comment;
 
     protected Song(){}
 
-    public Song(Long id, String title, String link, String duration, Album album) {
-        this.id = id;
+    public Song(String title, String link, String duration, Album album) {
         this.title = title;
         this.link = link;
         this.duration = duration;
