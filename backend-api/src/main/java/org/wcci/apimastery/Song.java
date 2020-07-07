@@ -1,6 +1,8 @@
 package org.wcci.apimastery;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 
 
@@ -15,17 +17,26 @@ public class Song {
     private String duration;
     @ManyToOne
     private Album album;
+    @ManyToOne
+    private Artist artist;
     private int rating;
     @OneToMany
-    private Collection<Comment> comment;
+    private Collection<Comment> comments;
 
     protected Song(){}
 
-    public Song(String title, String link, String duration, Album album) {
+    public Song(String title, String link, String duration, Album album, Artist artist, int rating, Comment... comments) {
         this.title = title;
         this.link = link;
         this.duration = duration;
         this.album = album;
+        this.artist = artist;
+        this.rating = rating;
+        this.comments = new ArrayList<>(Arrays.asList(comments));
+    }
+
+    public Song(String title) {
+        this.title = title;
     }
 
     public Long getId() {
@@ -47,4 +58,18 @@ public class Song {
     public Album getAlbum() {
         return album;
     }
+
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public Collection<Comment> getComments() {
+        return comments;
+    }
+
+
 }

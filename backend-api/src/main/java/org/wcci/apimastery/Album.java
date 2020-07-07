@@ -11,8 +11,8 @@ public class Album {
     @GeneratedValue
     @Id
     private Long id;
-    @ManyToMany
-    private Collection<Artist> artists;
+    @ManyToOne
+    private Artist artist;
     private String title;
     private String recordLabel;
     private String image;
@@ -20,24 +20,33 @@ public class Album {
     private Collection<Song> songs;
     private int rating;
     @OneToMany
-    private Collection<Comment> comment;
+    private Collection<Comment> comments;
 
     protected Album(){}
 
-    public Album(String title, String recordLabel, String image, Collection<Song> songs, Artist... artists) {
+    public Album(String title, String recordLabel, String image, Artist artist, Song... songs) {
         this.title = title;
         this.recordLabel = recordLabel;
         this.image = image;
-        this.songs = songs;
-        this.artists = new ArrayList<>(Arrays.asList(artists));
+        this.artist = artist;
+        this.comments = comments;
+        this.songs = new ArrayList<>(Arrays.asList(songs));
     }
 
     public Long getId() {
         return id;
     }
 
-    public Collection<Artist> getArtists() {
-        return artists;
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public Collection<Comment> getComments() {
+        return comments;
     }
 
     public String getTitle() {

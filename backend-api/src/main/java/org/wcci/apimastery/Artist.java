@@ -15,23 +15,24 @@ public class Artist {
     private String name;
     private String image;
     @OneToMany
-    private Collection<Album> album;
+    private Collection<Album> albums;
     private String description;
     private String genre;
     private String recordLabel;
     private int rating;
     @OneToMany
-    private Collection<Comment> comment;
+    private Collection<Comment> comments;
 
     protected Artist() {}
 
-    public Artist(String name, String image, Collection<Album> album, String description, String genre, String recordLabel) {
+    public Artist(String name, String image,String description, String genre, String recordLabel) {
         this.name = name;
         this.image = image;
-        this.album = album;
+        this.albums = albums;
         this.description = description;
         this.genre = genre;
         this.recordLabel = recordLabel;
+        this.comments = comments;
     }
 
     public Long getId() {
@@ -60,5 +61,13 @@ public class Artist {
 
     public String getRecordLabel() {
         return recordLabel;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public Collection<Comment> getComments() {
+        return comments;
     }
 }
