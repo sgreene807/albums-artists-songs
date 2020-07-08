@@ -1,7 +1,10 @@
-body {
+.home-body {
     background-image: url("https://pngimg.com/uploads/vinyl/vinyl_PNG22.png");
-    background-size: cover;
+    background-size: 100%;
     background-color: rgba(202, 204, 77, 0.473);
+}
+body{
+    background-color: rgba(253, 118, 8, 0.781);
 }
 
 nav ul {
@@ -9,6 +12,12 @@ nav ul {
     justify-content: space-evenly;
     align-items: center;
     margin-top: 150px;
+}
+.nav2 ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 10px;
 }
 
 li {
@@ -23,12 +32,22 @@ a {
 
 footer {
     position: absolute;
-    left: 40px;
-    top: 20px;
+    right: 40px;
+    bottom: 20px;
 }
 
 #fab-five {
     font-size: 1rem;
+}
+header{
+    position: absolute;
+    left: 40px;
+    top: 20px;
+    font-size: 1.1rem;
+}
+.song-names a{
+    font-size: 14px;
+
 }
 
 
