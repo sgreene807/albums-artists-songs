@@ -2,10 +2,14 @@ package org.wcci.apimastery;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import java.util.Collection;
+
+@RestController
 public class ArtistController {
 ArtistRepository artistRepo;
 ArtistStorage artistStorage;
@@ -15,15 +19,13 @@ ArtistStorage artistStorage;
         this.artistStorage = artistStorage;
     }
 
-    @RequestMapping("artists/{artistName}")
-    public String findArtistByName (@PathVariable String artistName, Model model) {
-        model.addAttribute("artist", artistStorage.findArtistByName(artistName));
-        return "/";
+    @GetMapping("/api/artists/{artistName}")
+    public Artist findArtistByName (@PathVariable String artistName) {
+        return artistStorage.findArtistByName(artistName);
     }
 
-    @RequestMapping("/artists")
-    public String findAllArtists(Model model){
-        model.addAttribute("artists", artistStorage.findAllArtists());
-        return "/";
+    @GetMapping("/api/artists")
+    public Collection<Artist> findAllArtists(){
+        return artistStorage.findAllArtists();
     }
 }

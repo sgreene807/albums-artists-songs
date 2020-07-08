@@ -2,6 +2,8 @@ package org.wcci.apimastery;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+
 @Service
 public class SongStorage {
     SongRepository songRepo;
@@ -18,7 +20,12 @@ public class SongStorage {
         return songRepo.findSongByTitle(title);
     }
 
-    public Iterable<Song> findAllSongs(){
-        return songRepo.findAll();
+    public Song save(Song song){
+        return songRepo.save(song);
+    }
+
+    public Collection<Song> findAllSongs(){
+
+        return (Collection<Song>) songRepo.findAll();
     }
 }

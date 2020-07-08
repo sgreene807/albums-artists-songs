@@ -2,10 +2,14 @@ package org.wcci.apimastery;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import java.util.Collection;
+
+@RestController
 public class SongController {
 SongRepository songRepo;
 SongStorage songStorage;
@@ -15,15 +19,13 @@ SongStorage songStorage;
         this.songStorage = songStorage;
     }
 
-    @RequestMapping ("songs/{songTitle}")
-    public String findSongByTitle(@PathVariable String songTitle, Model model){
-        model.addAttribute("song", songStorage.findSongByTitle(songTitle));
-        return "/";
+    @GetMapping("/api/songs/{songTitle}")
+    public Song findSongByTitle(@PathVariable String songTitle){
+        return songStorage.findSongByTitle(songTitle);
     }
 
-    @RequestMapping("/songs")
-    public String findAllSongs(Model model){
-        model.addAttribute("songs", songStorage.findAllSongs());
-        return "/";
+    @GetMapping("/api/songs")
+    public Collection<Song> findAllSongs(){
+        return songStorage.findAllSongs();
     }
 }
