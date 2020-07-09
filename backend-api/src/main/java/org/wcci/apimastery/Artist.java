@@ -48,7 +48,7 @@ public class Artist {
     }
 
     public Collection<Album> getAlbum() {
-        return album;
+        return albums;
     }
 
     public String getDescription() {

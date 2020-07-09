@@ -2,10 +2,7 @@ package org.wcci.apimastery;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -27,5 +24,15 @@ SongStorage songStorage;
     @GetMapping("/api/songs")
     public Collection<Song> findAllSongs(){
         return songStorage.findAllSongs();
+    }
+
+    @PostMapping("/api/songs/add")
+    public Song addSongs(String songName) {
+        Song songToAdd = songStorage.findSongByTitle(songName);
+        if (songToAdd == null) {
+            songToAdd = new Song();
+            songRepo.save(songToAdd);
+        }
+        return songStorage.save(songToAdd);
     }
 }
