@@ -1,5 +1,7 @@
 package org.wcci.apimastery;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,6 +13,7 @@ public class Album {
     @GeneratedValue
     @Id
     private Long id;
+    @JsonIgnore
     @ManyToOne
     private Artist artist;
     private String title;

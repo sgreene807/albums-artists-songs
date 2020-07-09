@@ -3,3 +3,12 @@ GET http://localhost:8080/api/artists
 GET http://localhost:8080/api/artists/LadyGaga
 ###
 GET http://localhost:8080/api/artists/Beyonce
+###
+PATCH http://localhost:8080/api/artists/Lady%20Gaga/addAlbum
+Content-Type: application/json
+
+{
+  "title": "Test Album",
+  "recordLabel": "Test Record Label"
+}
+###

@@ -10,10 +10,12 @@ import java.util.Collection;
 public class ArtistController {
     ArtistRepository artistRepo;
     ArtistStorage artistStorage;
+    AlbumStorage albumStorage;
 
-    public ArtistController(ArtistRepository artistRepo, ArtistStorage artistStorage) {
+    public ArtistController(ArtistRepository artistRepo, ArtistStorage artistStorage, AlbumStorage albumStorage) {
         this.artistRepo = artistRepo;
         this.artistStorage = artistStorage;
+        this.albumStorage = albumStorage;
     }
 
     @GetMapping("/api/artists/{artistName}")
@@ -29,6 +31,14 @@ public class ArtistController {
     @PostMapping("/api/artists/add")
     public Artist addArtists(@RequestBody Artist artistName) {
         return artistStorage.save(artistName);
+    }
+
+    @PatchMapping("/api/artists/{artistName}/addAlbum")
+    public Artist addAlbumToArtist(@PathVariable String artistName, @RequestBody Album album){
+        Artist artist =  artistStorage.findArtistByName(artistName);
+        Album albumToAdd = new Album(album.getTitle(), album.getRecordLabel(),album.getImage(), artist, (Song) album.getSongs());
+        albumStorage.save(albumToAdd);
+        return albumToAdd.getArtist();
     }
 
     @DeleteMapping("/api/artists/{artistName}")
