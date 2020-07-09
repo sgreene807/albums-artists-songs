@@ -29,7 +29,7 @@ public class SongStorage {
         return (Collection<Song>) songRepo.findAll();
     }
 
-    public void remove(Song songToRemove) {
+    public void delete(Song songToRemove) {
         songRepo.delete(songToRemove);
     }
 }

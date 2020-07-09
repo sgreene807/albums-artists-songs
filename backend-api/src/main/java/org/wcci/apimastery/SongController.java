@@ -27,19 +27,14 @@ SongStorage songStorage;
     }
 
     @PostMapping("/api/songs/add")
-    public Song addSongs(String songName) {
-        Song songToAdd = songStorage.findSongByTitle(songName);
-        if (songToAdd == null) {
-            songToAdd = new Song();
-            songRepo.save(songToAdd);
-        }
-        return songStorage.save(songToAdd);
+    public Song addSongs(@RequestBody Song songName) {
+        return songStorage.save(songName);
     }
 
-    @PostMapping("/api/songs/delete")
-    public String deleteSongs(String songName) {
+    @DeleteMapping("/api/songs/{songName}")
+    public Collection<Song> deleteSongs(@PathVariable String songName) {
         Song songToRemove = songStorage.findSongByTitle(songName);
-        songStorage.remove(songToRemove);
-        return "redirect:/songs/" + songName;
+        songStorage.delete(songToRemove);
+        return songStorage.findAllSongs();
     }
 }

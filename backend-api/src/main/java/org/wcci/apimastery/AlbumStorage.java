@@ -28,7 +28,7 @@ public class AlbumStorage {
         return (Collection<Album>) albumRepo.findAll();
     }
 
-    public void remove(Album albumToRemove) {
+    public void delete(Album albumToRemove) {
         albumRepo.delete(albumToRemove);
     }
 }

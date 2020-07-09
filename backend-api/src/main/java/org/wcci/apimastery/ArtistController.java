@@ -27,20 +27,15 @@ public class ArtistController {
     }
 
     @PostMapping("/api/artists/add")
-    public Artist addArtists(String artistName) {
-        Artist artistToAdd = artistStorage.findArtistByName(artistName);
-        if (artistToAdd == null) {
-            artistToAdd = new Artist();
-            artistRepo.save(artistToAdd);
-        }
-        return artistStorage.save(artistToAdd);
+    public Artist addArtists(@RequestBody Artist artistName) {
+        return artistStorage.save(artistName);
     }
 
-    @PostMapping("/api/artists/delete")
-    public String deleteArtists(String artistName) {
+    @DeleteMapping("/api/artists/{artistName}")
+    public Collection<Artist> deleteArtist(@PathVariable String artistName) {
         Artist artistToRemove = artistStorage.findArtistByName(artistName);
-        artistStorage.remove(artistToRemove);
-        return "redirect:/artists/" + artistName;
+        artistStorage.delete(artistToRemove);
+        return artistStorage.findAllArtists();
     }
 
 }

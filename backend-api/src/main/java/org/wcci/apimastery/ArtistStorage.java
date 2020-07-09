@@ -29,7 +29,7 @@ public class ArtistStorage {
         return (Collection<Artist>) artistRepo.findAll();
     }
 
-    public void remove(Artist artistToRemove) {
+    public void delete(Artist artistToRemove) {
         artistRepo.delete(artistToRemove);
     }
 }

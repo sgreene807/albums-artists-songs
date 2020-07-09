@@ -27,20 +27,15 @@ public class AlbumController {
     }
 
     @PostMapping("/api/albums/add")
-    public Album addAlbums(String albumName) {
-        Album albumToAdd = albumStorage.findAlbumByTitle(albumName);
-        if (albumToAdd == null) {
-            albumToAdd = new Album();
-            albumRepo.save(albumToAdd);
-        }
-        return albumStorage.save(albumToAdd);
+    public Album addAlbums(@RequestBody Album albumName) {
+        return albumStorage.save(albumName);
     }
 
-    @PostMapping("/api/albums/delete")
-    public String deleteAlbums(String albumName) {
+    @DeleteMapping("/api/albums/{albumName}")
+    public Collection<Album> deleteAlbums(@PathVariable String albumName) {
         Album albumToRemove = albumStorage.findAlbumByTitle(albumName);
-        albumStorage.remove(albumToRemove);
-        return "redirect:/artists/" + albumName;
+        albumStorage.delete(albumToRemove);
+        return albumStorage.findAllAlbums();
     }
 
 }
