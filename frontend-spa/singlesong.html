@@ -13,9 +13,6 @@
             <a href="index.html">Home</a>
         </li>
         <li>
-            <a href="albums.html">Albums</a>
-        </li>
-        <li>
             <a href="artists.html">Artists</a>
         </li>
         </ul>
@@ -32,6 +29,16 @@
         <h4>Star Rating</h4>
         <p>Comments about artist</p>
     </main>
+    <form action="" method="POST">
+        <label for="comment">Add a review for this song:</label><br>
+        <textarea maxlength="350"type="text" id="comment" name="comment" value="Review"></textarea>
+        <input type="submit" value="Submit">
+      </form>
+    <form action="" method="POST">
+        <label for="rating">Add a rating 1-5 for this song:</label><br>
+        <input type="text" id="rating" name="rating" value="Rating"><br>
+        <input type="submit" value="Submit">
+      </form>
     <footer>
         <h5>Fab Five | 2020</h5>
     </footer>

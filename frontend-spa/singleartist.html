@@ -15,12 +15,6 @@
             <li>
                 <a href="artists.html">Artists</a>
             </li>
-            <li>
-                <a href="albums.html">Albums</a>
-            </li>
-            <li>
-                <a href="songs.html">Songs</a>
-            </li>
             </ul>
         </nav>
 
@@ -47,6 +41,16 @@
         <form action="POST">
             <label for="albumName">Add album name:</label><br>
             <input type="text" id="albumName" name="albumName" value="Album"><br>
+            <input type="submit" value="Submit">
+          </form>
+          <form action="" method="POST">
+            <label for="comment">Add a review for this artist:</label>
+            <textarea maxlength="350"type="text" id="comment" name="comment" value="Review"></textarea>
+            <input type="submit" value="Submit">
+          </form>
+          <form action="" method="POST">
+            <label for="rating">Add a rating 1-5 for this album:</label><br>
+            <input type="text" id="rating" name="rating" value="Rating"><br>
             <input type="submit" value="Submit">
           </form>
 
