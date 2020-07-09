@@ -12,12 +12,6 @@
             <li>
                 <a href="index.html">Home</a>
             </li>
-            <li>
-                <a href="albums.html">Albums</a>
-            </li>
-            <li>
-                <a href="songs.html">Songs</a>
-            </li>
             </ul>
         </nav>
 
@@ -27,19 +21,33 @@
             <ul>
                 <li>
                     <a href="singleartist.html">Lady Gaga</a>
+                    <form action="" method="POST">
+                        <input type="hidden" name="artistName" value="Lady Gaga">
+                        <button type="submit">x</button>
+                    </form>
+                    
                 </li>
                 <li>
                     <a href="singleartist.html">The Weeknd</a>
+                    <form action="" method="POST">
+                        <input type="hidden" name="artistName" value="The Weeknd">
+                        <button type="submit">x</button>
+                    </form>
                 </li>
                 <li>
                     <a href="singleartist.html">Beyonce</a>
+                    <form action="" method="POST">
+                        <input type="hidden" name="artistName" value="Beyonce">
+                        <button type="submit">x</button>
+                    </form>
                 </li>
             </ul>
         </main>
-
-        
-          
-
+        <form action="" method="POST">
+            <label for="name">Add artist name:</label><br>
+            <input type="text" id="name" name="name" value="John"><br>
+            <input type="submit" value="Submit">
+          </form>
         <footer>
             <h5>Fab Five | 2020</h5>
         </footer>
