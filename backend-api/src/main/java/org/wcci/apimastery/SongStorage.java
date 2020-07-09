@@ -28,4 +28,8 @@ public class SongStorage {
 
         return (Collection<Song>) songRepo.findAll();
     }
+
+    public void remove(Song songToRemove) {
+        songRepo.delete(songToRemove);
+    }
 }

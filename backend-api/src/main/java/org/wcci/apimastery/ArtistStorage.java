@@ -28,4 +28,8 @@ public class ArtistStorage {
 
         return (Collection<Artist>) artistRepo.findAll();
     }
+
+    public void remove(Artist artistToRemove) {
+        artistRepo.delete(artistToRemove);
+    }
 }
