@@ -36,4 +36,11 @@ public class ArtistController {
         return artistStorage.save(artistToAdd);
     }
 
+    @PostMapping("/api/artists/delete")
+    public String deleteArtists(String artistName) {
+        Artist artistToRemove = artistStorage.findArtistByName(artistName);
+        artistStorage.remove(artistToRemove);
+        return "redirect:/artists/" + artistName;
+    }
+
 }

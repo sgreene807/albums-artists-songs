@@ -35,4 +35,11 @@ SongStorage songStorage;
         }
         return songStorage.save(songToAdd);
     }
+
+    @PostMapping("/api/songs/delete")
+    public String deleteSongs(String songName) {
+        Song songToRemove = songStorage.findSongByTitle(songName);
+        songStorage.remove(songToRemove);
+        return "redirect:/songs/" + songName;
+    }
 }

@@ -36,6 +36,11 @@ public class AlbumController {
         return albumStorage.save(albumToAdd);
     }
 
-
+    @PostMapping("/api/albums/delete")
+    public String deleteAlbums(String albumName) {
+        Album albumToRemove = albumStorage.findAlbumByTitle(albumName);
+        albumStorage.remove(albumToRemove);
+        return "redirect:/artists/" + albumName;
+    }
 
 }
