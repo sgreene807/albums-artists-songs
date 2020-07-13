@@ -12,17 +12,17 @@ import{
 } from "./components/mainSection.js"
 import{
     fetchArtist
-} from "./components/artistFetcher"
+} from "./components/artistFetcher.js"
 
 fetchArtist()
     .then(artists => renderPage(artists));
 
-const renderPage = () => {
+const renderPage = (artistToDisplay) => {
     const body = document.querySelector('.artists');
-    body.prepend(createNavBar());
-    body.appendChild(createHeader());
-    body.appendChild(createMainSection());
-    body.appendChild(createFooter());
+    body.prepend(createNavBar(artistToDisplay));
+    body.appendChild(createHeader(artistToDisplay));
+    body.appendChild(createMainSection(artistToDisplay));
+    body.appendChild(createFooter(artistToDisplay));
 }
 
 

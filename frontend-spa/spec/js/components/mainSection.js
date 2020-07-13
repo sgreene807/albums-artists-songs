@@ -2,22 +2,24 @@ export{
     createMainSection
 }
 
-const createMainSection = (artist) => {
+const createMainSection = (artists) => {
     const mainSection = document.createElement("main");
     mainSection.classList.add('artist');
-    const artists = ['Lady Gaga', 'The Weeknd', 'Beyonce'];
+    let string ='';
 
+    Object.values(artists).forEach(artist => {
+        string+=`
+        <li>  <a href="singleartist.html"> ${artist.name}
+       </a> <button type="submit">x</button>
+       </li>
+        `
+    })
     
-
     mainSection.innerHTML = `
-            <ul>
-                <li>
-                    <a href="singleartist.html">${artists.forEach((artist) => {
-                        console.log(artist.name);
-                    })}</a>
-                    <button type="submit">x</button>
-                </li>
-            </ul>   
+            <ul>  
+                ${string}
+            </ul> 
+
             <form action="" method="POST">
             <label for="name">Add artist name:</label><br>
             <input type="text" id="name" name="name" value="John"><br>
