@@ -5,10 +5,16 @@ export{
 const createMainSection = (artist) => {
     const mainSection = document.createElement("main");
     mainSection.classList.add('artist');
+    const artists = ['Lady Gaga', 'The Weeknd', 'Beyonce'];
+
+    
+
     mainSection.innerHTML = `
             <ul>
                 <li>
-                    <a href="singleartist.html">${artist.name}</a>
+                    <a href="singleartist.html">${artists.forEach((artist) => {
+                        console.log(artist.name);
+                    })}</a>
                     <button type="submit">x</button>
                 </li>
             </ul>   
