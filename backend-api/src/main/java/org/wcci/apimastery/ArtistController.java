@@ -23,6 +23,7 @@ public class ArtistController {
         return artistStorage.findArtistByName(artistName);
     }
 
+    @CrossOrigin
     @GetMapping("/api/artists")
     public Collection<Artist> findAllArtists() {
         return artistStorage.findAllArtists();
