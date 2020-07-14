@@ -8,19 +8,17 @@ import java.util.Collection;
 
 @RestController
 public class ArtistController {
-    ArtistRepository artistRepo;
     ArtistStorage artistStorage;
     AlbumStorage albumStorage;
 
-    public ArtistController(ArtistRepository artistRepo, ArtistStorage artistStorage, AlbumStorage albumStorage) {
-        this.artistRepo = artistRepo;
+    public ArtistController(ArtistStorage artistStorage, AlbumStorage albumStorage) {
         this.artistStorage = artistStorage;
         this.albumStorage = albumStorage;
     }
 
-    @GetMapping("/api/artists/{artistName}")
-    public Artist findArtistByName(@PathVariable String artistName) {
-        return artistStorage.findArtistByName(artistName);
+    @GetMapping("/api/artists/{id}")
+    public Artist findArtistById(@PathVariable Long id) {
+        return artistStorage.findArtistById(id);
     }
 
     @CrossOrigin
@@ -29,12 +27,12 @@ public class ArtistController {
         return artistStorage.findAllArtists();
     }
 
-    @PostMapping("/api/artists/add")
+    @PostMapping("/api/artists")
     public Artist addArtists(@RequestBody Artist artistName) {
         return artistStorage.save(artistName);
     }
 
-    @PatchMapping("/api/artists/{artistName}/addAlbum")
+    @PatchMapping("/api/artists/{artistName}/album")
     public Artist addAlbumToArtist(@PathVariable String artistName, @RequestBody Album album){
         Artist artist =  artistStorage.findArtistByName(artistName);
         Album albumToAdd = new Album(album.getTitle(), album.getRecordLabel(),album.getImage(), artist, (Song) album.getSongs());

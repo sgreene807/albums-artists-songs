@@ -32,4 +32,6 @@ public class ArtistStorage {
     public void delete(Artist artistToRemove) {
         artistRepo.delete(artistToRemove);
     }
+
+    public Artist findArtistById(Long id) { return artistRepo.findById(id).get(); }
 }
