@@ -8,22 +8,20 @@ import java.util.Collection;
 
 @RestController
 public class AlbumController {
-    AlbumRepository albumRepo;
     AlbumStorage albumStorage;
     SongStorage songStorage;
     ArtistStorage artistStorage;
 
-    public AlbumController(AlbumRepository albumRepo, AlbumStorage albumStorage, SongStorage songStorage, ArtistStorage artistStorage) {
-        this.albumRepo = albumRepo;
+    public AlbumController(AlbumStorage albumStorage, SongStorage songStorage, ArtistStorage artistStorage) {
         this.albumStorage = albumStorage;
         this.songStorage = songStorage;
 
         this.artistStorage = artistStorage;
     }
 
-    @GetMapping("/api/albums/{albumName}")
-    public Album findAlbumByTitle (@PathVariable String albumName)  {
-        return albumStorage.findAlbumByTitle(albumName);
+    @GetMapping("/api/albums/{albumId}")
+    public Album findAlbumById(@PathVariable Long albumId)  {
+        return albumStorage.findAlbumById(albumId);
     }
 
     @GetMapping ("/api/albums")
@@ -31,23 +29,23 @@ public class AlbumController {
         return albumStorage.findAllAlbums();
     }
 
-    @PostMapping("/api/albums/add")
+    @PostMapping("/api/albums/")
     public Album addAlbums(@RequestBody Album albumName) {
         return albumStorage.save(albumName);
     }
 
-    @PatchMapping("/api/albums/{albumName}/addSong")
-    public Album addSongToAlbum(@PathVariable String albumName,@PathVariable String artistName,@RequestBody Song song){
-        Album album = albumStorage.findAlbumByTitle(albumName);
-        Artist artist = artistStorage.findArtistByName(artistName);
+    @PatchMapping("/api/albums/{albumId}/song")
+    public Album addSongToAlbum(@PathVariable Long albumId, Long artistId,@RequestBody Song song){
+        Album album = albumStorage.findAlbumById(albumId);
+        Artist artist = artistStorage.findArtistById(artistId);
         Song songToAdd = new Song(song.getTitle(), song.getLink(),song.getDuration(),album,artist,song.getRating(), (Comment) song.getComments());
         songStorage.save(songToAdd);
         return songToAdd.getAlbum();
     }
 
-    @DeleteMapping("/api/albums/{albumName}")
-    public Collection<Album> deleteAlbums(@PathVariable String albumName) {
-        Album albumToRemove = albumStorage.findAlbumByTitle(albumName);
+    @DeleteMapping("/api/albums/{albumId}")
+    public Collection<Album> deleteAlbums(@PathVariable Long albumId) {
+        Album albumToRemove = albumStorage.findAlbumById(albumId);
         albumStorage.delete(albumToRemove);
         return albumStorage.findAllAlbums();
     }

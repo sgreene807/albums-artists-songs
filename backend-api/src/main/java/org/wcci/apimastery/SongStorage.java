@@ -20,6 +20,10 @@ public class SongStorage {
         return songRepo.findSongByTitle(title);
     }
 
+    public Song findSongById(Long songId){
+        return songRepo.findById(songId).get();
+    }
+
     public Song save(Song song){
         return songRepo.save(song);
     }

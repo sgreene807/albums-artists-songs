@@ -20,6 +20,10 @@ public class AlbumStorage {
         return albumRepo.findAlbumByTitle(title);
     }
 
+    public Album findAlbumById(Long albumId){
+        return albumRepo.findById(albumId).get();
+    }
+
     public Album save(Album album){
         return albumRepo.save(album);
     }

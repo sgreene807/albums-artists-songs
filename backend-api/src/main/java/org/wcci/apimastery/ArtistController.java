@@ -32,17 +32,17 @@ public class ArtistController {
         return artistStorage.save(artistName);
     }
 
-    @PatchMapping("/api/artists/{artistName}/album")
-    public Artist addAlbumToArtist(@PathVariable String artistName, @RequestBody Album album){
-        Artist artist =  artistStorage.findArtistByName(artistName);
+    @PatchMapping("/api/artists/{id}/album")
+    public Artist addAlbumToArtist(@PathVariable Long id, @RequestBody Album album){
+        Artist artist =  artistStorage.findArtistById(id);
         Album albumToAdd = new Album(album.getTitle(), album.getRecordLabel(),album.getImage(), artist, (Song) album.getSongs());
         albumStorage.save(albumToAdd);
         return albumToAdd.getArtist();
     }
 
-    @DeleteMapping("/api/artists/{artistName}")
-    public Collection<Artist> deleteArtist(@PathVariable String artistName) {
-        Artist artistToRemove = artistStorage.findArtistByName(artistName);
+    @DeleteMapping("/api/artists/{id}")
+    public Collection<Artist> deleteArtist(@PathVariable Long id) {
+        Artist artistToRemove = artistStorage.findArtistById(id);
         artistStorage.delete(artistToRemove);
         return artistStorage.findAllArtists();
     }
