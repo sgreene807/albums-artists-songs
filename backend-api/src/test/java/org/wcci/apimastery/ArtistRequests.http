@@ -1,14 +1,26 @@
 GET http://localhost:8080/api/artists
 ###
-GET http://localhost:8080/api/artists/LadyGaga
+GET http://localhost:8080/api/artists/1
 ###
-GET http://localhost:8080/api/artists/Beyonce
+GET http://localhost:8080/api/artists/2
 ###
-PATCH http://localhost:8080/api/artists/Lady%20Gaga/addAlbum
+GET http://localhost:8080/api/artists/3
+###
+PATCH http://localhost:8080/api/artists/1/album
 Content-Type: application/json
 
 {
   "title": "Test Album",
   "recordLabel": "Test Record Label"
 }
+###
+POST http://localhost:8080/api/artists/
+Content-Type: application/json
+
+{
+  "name": "Drake",
+  "image": "https://img.srgcdn.com/e/w:1000/ZVpVSUVubWlYY2FGZkM1Nmd3RFouanBn.jpg"
+}
+###
+DELETE http://localhost:8080/api/artists/1
 ###
