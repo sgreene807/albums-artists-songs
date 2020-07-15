@@ -16,7 +16,7 @@ public class Artist {
     private Long id;
     private String name;
     private String image;
-    @OneToMany (mappedBy = "artist")
+    @OneToMany (mappedBy = "artist", orphanRemoval = true)
     private Collection<Album> albums;
     private String description;
     private String genre;

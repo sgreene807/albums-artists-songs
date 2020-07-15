@@ -29,7 +29,7 @@ SongStorage songStorage;
         return songStorage.save(songName);
     }
 
-    @DeleteMapping("/api/songs/{songName}")
+    @DeleteMapping("/api/songs/{songId}")
     public Collection<Song> deleteSongs(@PathVariable Long songId) {
         Song songToRemove = songStorage.findSongById(songId);
         songStorage.delete(songToRemove);

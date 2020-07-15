@@ -19,7 +19,7 @@ public class Album {
     private String title;
     private String recordLabel;
     private String image;
-    @OneToMany
+    @OneToMany(orphanRemoval = true)
     private Collection<Song> songs;
     private int rating;
     @OneToMany

@@ -29,8 +29,8 @@ public class ArtistStorage {
         return (Collection<Artist>) artistRepo.findAll();
     }
 
-    public void delete(Artist artistToRemove) {
-        artistRepo.delete(artistToRemove);
+    public void delete(Long id) {
+        artistRepo.deleteById(id);
     }
 
     public Artist findArtistById(Long id) { return artistRepo.findById(id).get(); }
