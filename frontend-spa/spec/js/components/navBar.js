@@ -9,7 +9,7 @@ const createNavBar = () => {
     <nav>
     <ul>
     <li>
-        <a href="index.html">Home</a>
+        <a id="home-nav" href="index.html">Home</a>
     </li>
     </ul>
 </nav>

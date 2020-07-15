@@ -9,21 +9,23 @@ const createMainSection = (artists) => {
 
     Object.values(artists).forEach(artist => {
         string+=`
-        <li>  <a href="singleartist.html"> ${artist.name}
-       </a> <button type="submit">x</button>
+        <li class="grid-item">  
+            <img class="artist-img" src="${artist.image}">
+            <a href="singleartist.html">${artist.name}</a>
+            <button type="submit">x</button>
        </li>
         `
     })
     
     mainSection.innerHTML = `
-            <ul>  
+            <ul class="grid-container">  
                 ${string}
             </ul> 
 
-            <form action="" method="POST">
-            <label for="name">Add artist name:</label><br>
+            <form class="artist-form" action="" method="POST">
+            <label class="artist-label" for="name">Add artist name:</label><br>
             <input type="text" id="name" name="name" value="John"><br>
-            <input type="submit" value="Submit">
+            <input class="artist-submit" type="submit" value="Submit">
           </form>
     `
 
