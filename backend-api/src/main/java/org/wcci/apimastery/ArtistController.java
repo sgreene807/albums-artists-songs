@@ -1,7 +1,5 @@
 package org.wcci.apimastery;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -21,7 +19,6 @@ public class ArtistController {
         return artistStorage.findArtistById(id);
     }
 
-    @CrossOrigin
     @GetMapping("/api/artists")
     public Collection<Artist> findAllArtists() {
         return artistStorage.findAllArtists();
