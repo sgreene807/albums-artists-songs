@@ -14,7 +14,7 @@ const createMainSection = (artists) => {
             <a href="singleartist.html">${artist.name}</a>
             <button type="submit">x</button>
        </li>
-        `
+        ` 
     })
     
     mainSection.innerHTML = `
@@ -31,3 +31,8 @@ const createMainSection = (artists) => {
 
     return mainSection;
 }
+
+
+
+
+
