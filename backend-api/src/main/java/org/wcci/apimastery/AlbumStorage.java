@@ -32,7 +32,7 @@ public class AlbumStorage {
         return (Collection<Album>) albumRepo.findAll();
     }
 
-    public void delete(Album albumToRemove) {
-        albumRepo.delete(albumToRemove);
+    public void delete(Long id) {
+        albumRepo.deleteById(id);
     }
 }

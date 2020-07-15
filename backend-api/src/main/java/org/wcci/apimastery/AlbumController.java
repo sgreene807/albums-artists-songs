@@ -35,18 +35,17 @@ public class AlbumController {
     }
 
     @PatchMapping("/api/albums/{albumId}/song")
-    public Album addSongToAlbum(@PathVariable Long albumId, Long artistId,@RequestBody Song song){
+    public Album addSongToAlbum(@PathVariable Long albumId, @RequestBody Song song){
         Album album = albumStorage.findAlbumById(albumId);
-        Artist artist = artistStorage.findArtistById(artistId);
-        Song songToAdd = new Song(song.getTitle(), song.getLink(),song.getDuration(),album,artist,song.getRating(), (Comment) song.getComments());
+//        Artist artist = artistStorage.findArtistById(artistId);
+        Song songToAdd = new Song(song.getTitle(), song.getLink(),song.getDuration(),album,album.getArtist(),song.getRating(), (Comment) song.getComments());
         songStorage.save(songToAdd);
         return songToAdd.getAlbum();
     }
 
-    @DeleteMapping("/api/albums/{albumId}")
-    public Collection<Album> deleteAlbums(@PathVariable Long albumId) {
-        Album albumToRemove = albumStorage.findAlbumById(albumId);
-        albumStorage.delete(albumToRemove);
+    @DeleteMapping("/api/albums/{id}")
+    public Collection<Album> deleteAlbums(@PathVariable Long id) {
+        albumStorage.delete(id);
         return albumStorage.findAllAlbums();
     }
 

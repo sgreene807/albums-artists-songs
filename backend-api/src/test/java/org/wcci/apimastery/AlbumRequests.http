@@ -1,0 +1,24 @@
+GET http://localhost:8080/api/albums
+###
+GET http://localhost:8080/api/albums/58
+###
+GET http://localhost:8080/api/albums/56
+###
+GET http://localhost:8080/api/albums/57
+###
+PATCH http://localhost:8080/api/albums/58/song
+Content-Type: application/json
+
+{
+  "title": "Test Song",
+  "rating": 5
+}
+###
+POST http://localhost:8080/api/albums/
+Content-Type: application/json
+
+{
+  "title": "New Album Test",
+  "image": "https://img.srgcdn.com/e/w:1000/ZVpVSUVubWlYY2FGZkM1Nmd3RFouanBn.jpg"
+}
+###
