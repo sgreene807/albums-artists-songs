@@ -8,24 +8,14 @@ import{
     createNavBar
 } from "./components/navBar.js"
 import{
-    createMainSection2
-} from "./components/mainSection2.js"
-import{
-    createArtistSection
-} from "./components/artistSection.js"
-import{
     fetchArtist
 } from "./components/artistFetcher.js"
-import{
-    fetchSingleArtist
-} from "./components/singleArtistFetcher.js"
-
+import {
+    createMainSection
+} from "./components/mainSection.js"
 
 fetchArtist()
     .then(artists => renderPage(artists));
-
-fetchSingleArtist()
-    .then(artist=>renderPage2(artist));
 
 const renderPage = (artistToDisplay) => {
     const body = document.querySelector('.artists');
@@ -35,9 +25,5 @@ const renderPage = (artistToDisplay) => {
     body.appendChild(createFooter(artistToDisplay));
 }
 
-const renderPage2 = (artistToDisplay) => {
-
-    
-}
 
 
