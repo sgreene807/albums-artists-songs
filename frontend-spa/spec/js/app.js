@@ -1,28 +1,17 @@
-import {
-    createFooter
-} from "./components/footer.js"
-import {
-    createHeader
-} from "./components/header.js"
-import{
-    createNavBar
-} from "./components/navBar.js"
 import{
     fetchArtist
 } from "./components/artistFetcher.js"
 import {
     createMainSection
 } from "./components/mainSection.js"
-
+const element = document.querySelector('main');
 fetchArtist()
-    .then(artists => renderPage(artists));
+    .then(artists => renderPage(element, artists));
 
-const renderPage = (artistToDisplay) => {
+const renderPage = (element, artists) => {
     const body = document.querySelector('.artists');
-    body.prepend(createNavBar(artistToDisplay));
-    body.appendChild(createHeader(artistToDisplay));
-    body.appendChild(createMainSection(artistToDisplay));    
-    body.appendChild(createFooter(artistToDisplay));
+    body.append(createMainSection(element, artists));  
+    body.append(createArtistSection(element, artists));    
 }
 
 

@@ -53,9 +53,27 @@ export{
 import {
     clearElementChildren
 } from "../domHelper.js"
+import{
+    createMainSection
+} from "./mainSection.js"
+import {
+    fetchArtist
+} from "./artistFetcher.js"
+import {
+    createHeader
+} from "./header.js"
+import{
+    createNavBar
+} from "./navBar.js"
+import {
+    createFooter
+} from "./footer.js"
 
-const createArtistSection = (element, artists) => {
+const createArtistSection = (element, artist) => {
     clearElementChildren(element);
+    element.append(createHeader());
+    element.append(createNavBar());
+    element.append(createFooter());
     element.innerHTML = `
         <main>
             <img src="${artist.image}" alt="">
@@ -75,8 +93,9 @@ const createArtistSection = (element, artists) => {
                     <input type="hidden" name="albumName" value="Album 2">
                     <button type="submit">x</button>
                 </form>
-            </ul>
-             </main>
+            </ul> 
+        </main> 
     `
+   
 }
 
