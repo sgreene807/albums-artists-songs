@@ -25,30 +25,33 @@ const createMainSection = (element, artists) => {
     element.append(createFooter());
     let string = '';
     const mainSection = document.createElement("main");
-        mainSection.classList.add('artist');
-    for (let i = 0; i < artists.length; i++) {
-        string += `
-            <li class="grid-item">
-                <img class="artist-img" src="${artists[i].image}">
-                <a href="singleartist.html">${artists[i].name}</a>
-                <button type="submit">x</button>
-            </li>
-        `;
-    
-        mainSection.innerHTML = `
-        <ul class = "grid-container">
-        ${string}
-        </ul>
-        <form class="artist-form" action="" method="POST">
-        <label class="artist-label" for="name">Add artist name</label><br>
-        <input type ="text" id="name" name="name" value="John"><br>
-        <input class="artist-submit" type="submit" value="Submit"> 
-        </form>
-        `
+    mainSection.classList.add('artist');
+    const ul = document.createElement('ul');
+    ul.classList.add('grid-container')
+    const form = document.createElement('form');
+    form.classList.add('artist-form')
+    form.innerHTML = `
+            <label class="artist-label" for="name">Add artist name</label><br>
+            <input type ="text" id="name" name="name" value="John"><br>
+            <input class="artist-submit" type="submit" value="Submit"> 
+    `
+    mainSection.append(ul);
+    mainSection.append(form);
 
-        mainSection.addEventListener('click', () => {
+    for (let i = 0; i < artists.length; i++) {
+        const li = document.createElement('li')
+        li.classList.add('grid-item');
+        li.innerHTML = `
+                <img class="artist-img" src="${artists[i].image}">
+                <a>${artists[i].name}</a>
+                <button type="submit">x</button>
+        `
+       li.addEventListener('click', (event) => {
+            event.preventDefault();
             createArtistSection(element, artists[i]);
         });
-        element.append(createArtistSection(element, artists[i]));
+
+        ul.append(li)
     }
+    element.append(mainSection);
 }

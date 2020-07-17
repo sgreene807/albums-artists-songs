@@ -48,7 +48,7 @@ const createArtistSection = (element, artist) => {
         //             <button type="submit">x</button>
         //           </form>
         //     `
-        element.append(artistSection);
+        // element.append(artistSection);
     }
     
     
