@@ -25,31 +25,44 @@ const createArtistSection = (element, artist) => {
     element.append(createHeader());
     element.append(createNavBar());
     element.append(createFooter());
-    // const artistSection = document.createElement('main');
-    // artistSection.classList.add('singleArtist');
-    element.innerHTML = `
-            <img src="${artist.image}" alt="">
-            <h2>${artist.name}</h2>
-            <h4>${artist.genre}</h4>
-            <h4>${artist.recordLabel}</h4>
-            <p>${artist.description}</p>
-            <h4>List of Albums</h4>
+    const ul = document.createElement('ul');
+    ul.innerHTML = `
+        <img src="${artist.image}" alt="">
+        <h2>${artist.name}</h2>
+        <h4>${artist.genre}</h4>
+        <h4>${artist.recordLabel}</h4>
+        <p>${artist.description}</p>
+    `
+    element.append(ul);
+
+    for (let i = 0; i < albums.length; i++){
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <a>${artist.albums[i].name}</a>
         `
-
-        // const albums = document.createElement('ul');
-        // albums.classList.add('song-names');
-
-        // artist.albums.forEach((album)=> {
-        //     const li = document.createElement('li');
-        //     li.innerHTML = `
-        //     <li><a href="singlealbum.html">${album.name}</a></li>
-        //         <form action="" method="POST">
-        //             <input type="hidden" name="albumName" value="Album 1">
-        //             <button type="submit">x</button>
-        //           </form>
-        //     `
-        // element.append(artistSection);
+        li.addEventListener('click', () => {
+            createAlbumSection(element, albums[i]);
+        })
     }
+
+    ul.append(li);
+
+    // const albums = document.createElement('ul');
+
+    // artist.albums.forEach((album) => {
+    //     const li = document.createElement('li');
+    //     li.innerHTML = `<a>${album.title}</a>`
+    //     li.addEventListener('click', () => {
+    //         alert('You clicked on ${album.name}')
+    //     })
+    //     albums.appendChild(li);
+    // })
+
+    // element.append(albums);
+}
+
+    
+
     
     
 
