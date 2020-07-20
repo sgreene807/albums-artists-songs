@@ -49,7 +49,7 @@ public class Artist {
         return image;
     }
 
-    public Collection<Album> getAlbum() {
+    public Collection<Album> getAlbums() {
         return albums;
     }
 
