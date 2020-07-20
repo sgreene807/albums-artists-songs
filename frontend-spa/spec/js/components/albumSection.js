@@ -22,6 +22,9 @@ import{
 import {
     fetchArtist
 } from "./artistFetcher.js"
+import { 
+    createSongForm 
+} from "./songForm.js"
 
 
 const createAlbumSection = (element, album) => {
@@ -33,8 +36,7 @@ const createAlbumSection = (element, album) => {
     ul.innerHTML = `
         <img src="${album.image}" alt="">
         <p>${album.title}</p>
-        <p>${album.recordLabel}</p>
-        <p>${album.artist}</p>       
+        <p>${album.recordLabel}</p>       
     `
     element.append(ul);
     
@@ -49,5 +51,7 @@ const createAlbumSection = (element, album) => {
         })
         ul.append(li);
     }
+
+    createSongForm(element);
  
 }

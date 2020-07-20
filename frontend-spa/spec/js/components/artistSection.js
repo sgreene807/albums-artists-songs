@@ -22,6 +22,9 @@ import {
 import {
     createAlbumSection
 } from "./albumSection.js"
+import{
+    createAlbumForm
+} from"./albumForm.js"
 
 const createArtistSection = (element, artist) => {
     clearElementChildren(element);
@@ -49,7 +52,7 @@ const createArtistSection = (element, artist) => {
         })
         ul.append(li);
     }
-
+    createAlbumForm(element);    
 }
 
     

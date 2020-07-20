@@ -16,6 +16,9 @@ import {
 import {
     clearElementChildren
 } from "../domHelper.js"
+import{
+    createArtistForm
+} from "./artistForm.js"
 
 
 const createMainSection = (element, artists) => {
@@ -28,15 +31,15 @@ const createMainSection = (element, artists) => {
     mainSection.classList.add('artist');
     const ul = document.createElement('ul');
     ul.classList.add('grid-container')
-    const form = document.createElement('form');
-    form.classList.add('artist-form')
-    form.innerHTML = `
-            <label class="artist-label" for="name">Add artist name</label><br>
-            <input type ="text" id="name" name="name" value="John"><br>
-            <input class="artist-submit" type="submit" value="Submit"> 
-    `
+    // const form = document.createElement('form');
+    // form.classList.add('artist-form')
+    // form.innerHTML = `
+    //         <label class="artist-label" for="name">Add artist name</label><br>
+    //         <input type ="text" id="name" name="name" value="John"><br>
+    //         <input class="artist-submit" type="submit" value="Submit"> 
+    // `
     mainSection.append(ul);
-    mainSection.append(form);
+    // mainSection.append(form);
 
     for (let i = 0; i < artists.length; i++) {
         const li = document.createElement('li')
@@ -54,4 +57,5 @@ const createMainSection = (element, artists) => {
         ul.append(li)
     }
     element.append(mainSection);
+    createArtistForm(element);
 }

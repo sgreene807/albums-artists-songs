@@ -15,23 +15,16 @@ import {
 } from "../domHelper.js"
 
 
-const createSongSection = (element, song) => {
+const createSongSection = (element, songs) => {
     clearElementChildren(element);
     element.append(createHeader());
     element.append(createNavBar());
     element.append(createFooter());
     const ul = document.createElement('ul');
     ul.innerHTML = `
-        <p>${song.title}</p>
-        <a>${song.link}</a>
-        <p>${song.duration}</p>
-        <p>${song.album.title}</p>
-        <p>${song.artist.name}</p>   
+        <p>${songs.title}</p>
+        <a href="${songs.link}">Click here for Youtube Link</a>
+        <p>${songs.duration}</p>  
     `
     element.append(ul);
 }
-
-    // li.addEventListener('click', () => {
-    //     event.preventDefault();
-    //     createSongSection(element, album.songs[i]);
-    // })
