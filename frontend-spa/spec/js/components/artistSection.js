@@ -19,6 +19,9 @@ import{
 import {
     createFooter
 } from "./footer.js"
+import {
+    createAlbumSection
+} from "./albumSection.js"
 
 const createArtistSection = (element, artist) => {
     clearElementChildren(element);
@@ -35,30 +38,18 @@ const createArtistSection = (element, artist) => {
     `
     element.append(ul);
 
-    for (let i = 0; i < albums.length; i++){
+    for (let i = 0; i < artist.albums.length; i++){
         const li = document.createElement('li');
         li.innerHTML = `
-            <a>${artist.albums[i].name}</a>
+            <a>${artist.albums[i].title}</a>
         `
         li.addEventListener('click', () => {
-            createAlbumSection(element, albums[i]);
+            event.preventDefault();
+            createAlbumSection(element, artist.albums[i]);
         })
+        ul.append(li);
     }
 
-    ul.append(li);
-
-    // const albums = document.createElement('ul');
-
-    // artist.albums.forEach((album) => {
-    //     const li = document.createElement('li');
-    //     li.innerHTML = `<a>${album.title}</a>`
-    //     li.addEventListener('click', () => {
-    //         alert('You clicked on ${album.name}')
-    //     })
-    //     albums.appendChild(li);
-    // })
-
-    // element.append(albums);
 }
 
     

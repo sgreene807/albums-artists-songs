@@ -11,11 +11,17 @@ import {
     createFooter
 } from "./footer.js"
 import {
+    clearElementChildren
+} from "../domHelper.js"
+import{
+    createSongSection
+} from "./songSection.js"
+import{
     createArtistSection
 } from "./artistSection.js"
 import {
-    clearElementChildren
-} from "../domHelper.js"
+    fetchArtist
+} from "./artistFetcher.js"
 
 
 const createAlbumSection = (element, album) => {
@@ -23,11 +29,25 @@ const createAlbumSection = (element, album) => {
     element.append(createHeader());
     element.append(createNavBar());
     element.append(createFooter());
-    const main = document.createElement('main');
-    main.innerHTML = `
+    const ul = document.createElement('ul');
+    ul.innerHTML = `
+        <img src="${album.image}" alt="">
         <p>${album.title}</p>
-       
+        <p>${album.recordLabel}</p>
+        <p>${album.artist}</p>       
     `
-    element.append(main);
+    element.append(ul);
+    
+    for (let i = 0; i < album.songs.length; i++){
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <a>${album.songs[i].title}</a>
+        `
+        li.addEventListener('click', () => {
+            event.preventDefault();
+            createSongSection(element, album.songs[i]);
+        })
+        ul.append(li);
+    }
  
 }
