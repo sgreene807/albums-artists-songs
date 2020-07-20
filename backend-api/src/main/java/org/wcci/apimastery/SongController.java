@@ -24,7 +24,7 @@ SongStorage songStorage;
         return songStorage.findAllSongs();
     }
 
-    @PostMapping("/api/songs/")
+    @PostMapping("/api/songs/add")
     public Song addSongs(@RequestBody Song songName) {
         return songStorage.save(songName);
     }

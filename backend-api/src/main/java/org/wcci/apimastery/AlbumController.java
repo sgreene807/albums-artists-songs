@@ -15,7 +15,6 @@ public class AlbumController {
     public AlbumController(AlbumStorage albumStorage, SongStorage songStorage, ArtistStorage artistStorage) {
         this.albumStorage = albumStorage;
         this.songStorage = songStorage;
-
         this.artistStorage = artistStorage;
     }
 
@@ -29,7 +28,7 @@ public class AlbumController {
         return albumStorage.findAllAlbums();
     }
 
-    @PostMapping("/api/albums/")
+    @PostMapping("/api/albums/add")
     public Album addAlbums(@RequestBody Album albumName) {
         return albumStorage.save(albumName);
     }

@@ -23,7 +23,8 @@ public class Song {
     @OneToMany
     private Collection<Comment> comments;
 
-    protected Song(){}
+    protected Song() {
+    }
 
     public Song(String title, String link, String duration, Album album, Artist artist, int rating, Comment... comments) {
         this.title = title;
@@ -35,8 +36,10 @@ public class Song {
         this.comments = new ArrayList<>(Arrays.asList(comments));
     }
 
-    public Song(String title) {
+    public Song(String title, String link, String duration) {
         this.title = title;
+        this.link = link;
+        this.duration = duration;
     }
 
     public Long getId() {

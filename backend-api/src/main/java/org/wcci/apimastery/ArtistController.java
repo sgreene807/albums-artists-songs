@@ -24,7 +24,7 @@ public class ArtistController {
         return artistStorage.findAllArtists();
     }
 
-    @PostMapping("/api/artists")
+    @PostMapping("/api/artists/add")
     public Artist addArtists(@RequestBody Artist artistName) {
         return artistStorage.save(artistName);
     }
